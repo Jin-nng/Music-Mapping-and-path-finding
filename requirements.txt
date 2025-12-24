@@ -1,7 +1,2 @@
 flask
-pandas
-numpy
-scikit-learn
-matplotlib
-os
-heapq
+gunicorn
