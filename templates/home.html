@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <title>Home page</title>
+    </head>
+    <body>
+        <h1>Welcome to the music questionnaire</h1>
+        <p>
+            Thank you for participating! It will only take a few seconds per music.
+        </p>
+        <form id="music_form" action="" method="get">
+            <select id="music_choice" required onchange="updateAction()">
+                {% for title, author in zip(music_titles, music_authors) %}
+                    <option value="{{ title }}">{{ title }} - {{ author }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Start</button>
+        </form>
+        <script>
+            function updateAction() {
+                var select = document.getElementById('music_choice');
+                document.getElementById('music_form').action = '/' + select.value;
+            }
+            // Call on load to set initial action if needed
+            window.onload = function() {
+                updateAction();
+            };
+        </script>
+    </body>
+</html>
