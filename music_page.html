@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <script src="https://kit.fontawesome.com/956bccb0d1.js" crossorigin="anonymous"></script>
+        <title>Music Questionnaire</title>
+    </head>
+    <body>
+        <h1>Music Questionnaire</h1>
+        <a href="https://open.spotify.com/track/{{ music_spotify_id }}" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-spotify"></i>
+        </a>
+        <h2>{{ music_name_html }} - {{ music_author_html }}</h2>
+        <article id="instructions">
+            <p>For the music above, indicate how much it matches the following terms with notes belonging in {0, 0.05, 0.1, ..., 0.95, 1}.</p>
+            <p>Note: A pop music can have a small rock, electro, jazz component, etc.</p>
+            <p>A priori, all musics have several non-zero components.</p>
+        </article>
+        <form action="/submit" method="post">
+            <input type="hidden" name="music_name" value="{{ music_name_html }}">
+            <ul>
+                <li>    
+                    <label for="rock" class="category">Rock </label><label class="explanation">(0.3 = Country, 0.6 = Rock, 1 = Heavy metal)</label>
+                    <input type="number" id="rock" name="rock" min="0" max="1" step="0.05" required><br><br>
+                </li>
+                <li>
+                    <label for="rap" class="category">Rap</label>
+                    <input type="number" id="rap" name="rap" min="0" max="1" step="0.05" required><br><br>
+                </li>
+                <li>
+                    <label for="pop" class="category">Pop</label>
+                    <input type="number" id="pop" name="pop" min="0" max="1" step="0.05" required><br><br>
+                </li>
+                <li>
+                    <label for="jazz" class="category">Jazz </label><label class="explanation">(0.5 = bossa nova, 0.8 = Jazz or Blues)</label>
+                    <input type="number" id="jazz" name="jazz" min="0" max="1" step="0.05" required><br><br>
+                </li>
+                <li>
+                    <label for="electro" class="category">Electro </label><label class="explanation">(0.2 = Disco, 0.4 = Electro pop, 0.6 = Electro or House, 1 = Hard Techno)</label>
+                    <input type="number" id="electro" name="electro" min="0" max="1" step="0.05" required><br><br>
+                </li>
+                <li>
+                    <label for="chill" class="category">Chill </label><label class="explanation">(0 = Very very chill, 0.5 = Energetic, 1 = Aggressive)</label>
+                    <input type="number" id="chill" name="chill" min="0" max="1" step="0.05" required><br><br>
+                </li>
+            </ul>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
