@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+import matplotlib
+matplotlib.use('Agg')
 import data
 import csv
 import path_finding
@@ -46,5 +48,6 @@ def submit():
         if not file_exists:
             writer.writerow(['music_name', 'pop', 'rap', 'jazz', 'rock', 'electro', 'chill'])
         writer.writerow([music_name, pop, rap, jazz, rock, electro, chill])
+
 
     return home_page()
