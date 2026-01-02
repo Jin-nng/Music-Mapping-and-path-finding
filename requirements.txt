@@ -2,9 +2,8 @@ pip>=23.3
 setuptools>=68
 wheel>=0.41
 
-flask
-gunicorn
-
+Flask==3.0.0
+gunicorn==21.2.0
 numpy==1.26.4
-pandas==2.2.2
-matplotlib==3.8.4
+pandas==2.2.0
+matplotlib==3.8.2
